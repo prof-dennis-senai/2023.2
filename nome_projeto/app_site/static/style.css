@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: red;
+}
+
+header {
+    background-color: #2d2d2d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+header span {
+    color: #fff;
+    font-size: 1.5em;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 5px;
+}
+
+.menu li a {
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    border: transparent solid 2px;
+}
+
+.menu li a:hover {
+    background-color: #1d1d1d;
+    border: #f44a4a40 solid 2px;
+    transition: all .1s ease-in-out;
+}
