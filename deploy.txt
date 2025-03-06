@@ -1,0 +1,8 @@
+# Subir um "servidor" com Docker
+docker run -it ubuntu:22.04 bash
+
+# Para verificar o CONTAINER_ID
+docker ps
+
+# Para entrar dentro do Ubuntu no docker
+docker exec -it <CONTAINER_ID> bash
