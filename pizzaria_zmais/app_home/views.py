@@ -35,3 +35,7 @@ def home(request):
         }
     ]
     return render(request, 'app_home/pages/home.html', context={'produtos': lista_produtos})
+
+
+def criar_pizza(request):
+    return render(request, 'app_home/pages/pizza.html')

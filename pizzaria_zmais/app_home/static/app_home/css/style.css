@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #fdf5e8;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #c41a30;
+    height: 100px;
+}
+
+.menu ul {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+}
+
+.menu li a {
+    padding: 5px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    font-weight: bold;
+    color: white;
+    position: relative;
+    padding-bottom: 6px;
+}
+
+.menu li a:hover {
+    text-shadow: 2px 2px 5px rgb(255, 255, 255);
+}
+
+.menu li a::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%); 
+    width: 0;
+    height: 2px;
+    background-color: #ffae00; 
+    transition: width 0.3s ease;
+}
+
+.menu li a:hover::after {
+    width: 42px; 
+}
+
+main {
+    margin: 0 auto;
+    max-width: 1024px;
+}
+.cardapio {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 15px;
+}
+
+.cardapio-item {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid #c41a30;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.cardapio-item img {
+    width: 181px;
+}
+
+
+.cardapio-item h3 {
+    font-size: 1.3rem;
+    color: #c41a30;
+}
+
+.cardapio-item p {
+    font-size: 1rem;
+    font-style: italic;
+}
+
+.cardapio-item span {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.cardapio-item a {
+    text-decoration: none;
+    background-color: #c41a30;
+    padding: 10px;
+    border-radius: 9999px;
+    color: #fff;
+    font-weight: bold;
+}

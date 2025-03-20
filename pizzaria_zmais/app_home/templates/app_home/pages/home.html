@@ -1,162 +1,29 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizzaria ZMais</title>
-</head>
+{% extends "app_home/global/index.html" %}
 
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+{% block title %}Home{% endblock title %}
 
-    body {
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        background-color: #fdf5e8;
-    }
-
-    header {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .menu {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #c41a30;
-        height: 100px;
-    }
-
-    .menu ul {
-        display: flex;
-        list-style: none;
-        gap: 10px;
-    }
-
-    .menu li a {
-        padding: 5px;
-        text-decoration: none;
-        {% comment %} border-bottom: transparent 2px solid; {% endcomment %}
-        font-size: 1.2rem;
-        border-radius: 8px;
-        font-weight: bold;
-        color: white;
-    }
-
-    .menu li a:hover {
-        {% comment %} border-bottom: #ffb4b4c9 2px solid; {% endcomment %}
-        {% comment %} box-shadow: 0px 10px 12px 0px #999999; {% endcomment %}
-        text-shadow: 2px 2px 5px #999999;
-    }
-
-    .menu li a:hover::before {
-        content: " ";
-        display: block;
-        height: 2px;
-        width: 42px;
-        margin: 0 auto;
-        margin-top: 6px;
-        background-color: #ffae00;
-        visibility: hidden;
-        bottom: 14px;
-        left: 50%;
-        position: absolute;
-        transform: translate(-50%, -50%);
-        
-    }
-
-    main {
-        margin: 0 auto;
-        max-width: 1024px;
-    }
-    .cardapio {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
-        padding: 15px;
-    }
-
-    .cardapio-item {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        gap: 10px;
-        border: 1px solid #c41a30;
-        padding: 10px;
-        border-radius: 10px;
-        background-color: #fff;
-    }
-
-    .cardapio-item img {
-        width: 181px;
-    }
-
-
-    .cardapio-item h3 {
-        font-size: 1.3rem;
-        color: #c41a30;
-    }
-
-    .cardapio-item p {
-        font-size: 1rem;
-        font-style: italic;
-    }
-
-    .cardapio-item span {
-        font-size: 1.2rem;
-        font-weight: bold;
-    }
-
-    .cardapio-item a {
-        text-decoration: none;
-        background-color: #c41a30;
-        padding: 10px;
-        border-radius: 9999px;
-        color: #fff;
-        font-weight: bold;
-    }
-</style>
-
-<body>
-    <header>
-        <nav class="menu">
-            <ul>
-                <li><a href="#">Cárdapio</a></li>
-                <li><a href="#">Promoções</a></li>
-                <li><a href="#">Carrinho</a></li>
-                <li><a href="#">Contato</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <div class="cardapio">
-            <div class="cardapio-item">
-                <img src="https://pizzariazermatt.com.br/imgs/produto-pizza-sabor-quatro-queijos-tele-entrega-florianopolis-sao-jose.png" alt="">
-                <h3>Pizza Quatro Queijos</h3>
-                <p>Mussarela, provolone, parmesão e gorgonzola.</p>
-                <span>R$ 39,90</span>
-                <a href="#">Adicionar no carrinho</a>
-            </div>
-
-            {% for pizza in produtos %}
-            <div class="cardapio-item">
-                <img src="{{ pizza.img }}">
-                <h3>{{ pizza.nome }}</h3>
-                <p>{{ pizza.descricao }}</p>
-                <span>{{ pizza.preco }}</span>
-                <a href="#">Adicionar no carrinho</a>
-            </div>
-            {% endfor %}
-
+{% block content %}
+<main>
+    <div class="cardapio">
+        <div class="cardapio-item">
+            <img src="https://pizzariazermatt.com.br/imgs/produto-pizza-sabor-quatro-queijos-tele-entrega-florianopolis-sao-jose.png"
+                alt="">
+            <h3>Pizza Quatro Queijos</h3>
+            <p>Mussarela, provolone, parmesão e gorgonzola.</p>
+            <span>R$ 39,90</span>
+            <a href="#">Adicionar no carrinho</a>
         </div>
-        
-    </main>
-    
-    <footer>Foooter</footer>
-</body>
-</html>
+
+        {% for pizza in produtos %}
+        <div class="cardapio-item">
+            <img src="{{ pizza.img }}">
+            <h3>{{ pizza.nome }}</h3>
+            <p>{{ pizza.descricao }}</p>
+            <span>{{ pizza.preco }}</span>
+            <a href="#">Adicionar no carrinho</a>
+        </div>
+        {% endfor %}
+
+    </div>
+</main>
+{% endblock content %}
