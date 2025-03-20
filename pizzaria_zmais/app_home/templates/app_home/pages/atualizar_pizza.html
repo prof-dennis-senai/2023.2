@@ -1,0 +1,17 @@
+{% extends "app_home/global/index.html" %}
+
+{% block title %}Criar Pizza{% endblock title %}
+
+{% block content %}
+<main>
+    <h1>Atualizar Pizza</h1>
+    <form action="{% url 'atualizar_pizza' pizza.id %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="pizza" placeholder="Nome da Pizza" value="{{ pizza.pizza }}">
+        <input type="text" name="preco" placeholder="Preco da Pizza" value="{{ pizza.preco }}">
+        <input type="text" name="imagem" placeholder="Imagem da Pizza" value="{{ pizza.imagem }}">
+        <input type="text" name="ingredientes" placeholder="Ingredientes da Pizza" value="{{ pizza.ingredientes }}">
+        <button type="submit">Criar</button>
+    </form>
+</main>
+{% endblock content %}

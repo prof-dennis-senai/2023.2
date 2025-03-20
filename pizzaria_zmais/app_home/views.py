@@ -3,39 +3,6 @@ from app_home.models import PizzaModel
 
 # Create your views here.
 def home(request):
-    lista_produtos = [
-        {
-            'img': 'https://pizzariazermatt.com.br/imgs/produto-pizza-sabor-quatro-queijos-tele-entrega-florianopolis-sao-jose.png',
-            'nome': 'Pizza Calabresa',
-            'descricao': 'Mussarela, calabresa e cebola.',
-            'preco': 'R$ 39,90'
-        },
-        {
-            'img': 'https://pizzariazermatt.com.br/imgs/produto-pizza-sabor-quatro-queijos-tele-entrega-florianopolis-sao-jose.png',
-            'nome': 'Pizza Quatro Queijos',
-            'descricao': 'Mussarela, provolone, parmesão e gorgonzola.',
-            'preco': 'R$ 39,90'
-        },
-        {
-            'img': 'https://pizzariazermatt.com.br/imgs/produto-pizza-sabor-quatro-queijos-tele-entrega-florianopolis-sao-jose.png',
-            'nome': 'Pizza Portuguesa',
-            'descricao': 'Mussarela, provolone, tomate, azeitona e cebola.',
-            'preco': 'R$ 39,90'
-        },
-        {
-            'img': 'https://pizzariazermatt.com.br/imgs/produto-pizza-sabor-quatro-queijos-tele-entrega-florianopolis-sao-jose.png',
-            'nome': 'Pizza Portuguesa',
-            'descricao': 'Mussarela, provolone, tomate, azeitona e cebola.',
-            'preco': 'R$ 39,90'
-        },
-        {
-            'img': 'https://pizzariazermatt.com.br/imgs/produto-pizza-sabor-quatro-queijos-tele-entrega-florianopolis-sao-jose.png',
-            'nome': 'Pizza Portuguesa',
-            'descricao': 'Mussarela, provolone, tomate, azeitona e cebola.',
-            'preco': 'R$ 39,90'
-        }
-    ]
-
     lista_produtos = PizzaModel.objects.all()
     return render(request, 'app_home/pages/home.html', context={'produtos': lista_produtos})
 
@@ -64,5 +31,13 @@ def deletar_pizza(request, id):
 
 
 def atualizar_pizza(request, id):
-    pizza = PizzaModel.objects.get(id=id)
-    return render(request, 'app_home/pages/pizza.html', context={'pizza': pizza})
+    if request.method == 'GET':
+        pizza = PizzaModel.objects.get(id=id)
+        return render(request, 'app_home/pages/atualizar_pizza.html', context={'pizza': pizza})
+    
+    pizza = request.POST.get('pizza')
+    preco = request.POST.get('preco')
+    imagem = request.POST.get('imagem')
+    ingredientes = request.POST.get('ingredientes')
+    PizzaModel.objects.filter(id=id).update(pizza=pizza, preco=preco, imagem=imagem, ingredientes=ingredientes)
+    return redirect('listar')
