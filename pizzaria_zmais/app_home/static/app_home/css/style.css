@@ -67,8 +67,8 @@ main {
 .cardapio {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    padding: 15px;
+    gap: 50px;
+    padding: 50px 10px;
 }
 
 .cardapio-item {
@@ -76,10 +76,10 @@ main {
     align-items: center;
     flex-direction: column;
     gap: 10px;
-    border: 1px solid #c41a30;
-    padding: 10px;
+    padding: 20px;
     border-radius: 10px;
-    background-color: #fff;
+    background-color: #c41a30;
+    color: #fff;
 }
 
 .cardapio-item img {
@@ -89,24 +89,30 @@ main {
 
 .cardapio-item h3 {
     font-size: 1.3rem;
-    color: #c41a30;
+    color: #fff;
 }
 
 .cardapio-item p {
     font-size: 1rem;
     font-style: italic;
+    text-align: center;
 }
 
 .cardapio-item span {
     font-size: 1.2rem;
     font-weight: bold;
+    text-align: center;
 }
 
 .cardapio-item a {
     text-decoration: none;
-    background-color: #c41a30;
+    background-color: #fff;
     padding: 10px;
     border-radius: 9999px;
-    color: #fff;
+    color: #c41a30;
     font-weight: bold;
+}
+
+.cardapio-item a:hover {
+    background-color: #ffae00;
 }
