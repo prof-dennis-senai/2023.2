@@ -5,5 +5,18 @@
 {% block content %}
 <main>
     <h1>Criar Pizza</h1>
+    <form action="{% url 'pizza' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="pizza" placeholder="Nome da Pizza">
+        <input type="text" name="preco" placeholder="Preco da Pizza">
+        <input type="text" name="imagem" placeholder="Imagem da Pizza">
+        <input type="text" name="ingredientes" placeholder="Ingredientes da Pizza">
+        <button type="submit">Criar</button>
+    </form>
+    {% if pizza %}
+        <ul> 
+            <li>A Pizza "{{ pizza }}" foi criada com sucesso!</li>  
+        </ul>
+    {% endif %}
 </main>
 {% endblock content %}

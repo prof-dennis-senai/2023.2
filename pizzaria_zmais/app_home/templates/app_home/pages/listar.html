@@ -1,0 +1,17 @@
+{% extends "app_home/global/index.html" %}
+
+{% block title %}Criar Pizza{% endblock title %}
+
+{% block content %}
+<main>
+    <h1>Listar Pizza</h1>
+    <ul>
+
+        {% for pizza in pizzas %}
+        <li>
+            <p>{{ pizza.pizza }} - {{ pizza.preco }} - {{ pizza.ingredientes }} | <a href="{% url 'deletar_pizza' pizza.id %}">Remover pizza</a> - <a href="{% url 'atualizar_pizza' pizza.id %}">Atualizar pizza</a></p>
+        </li>
+        {% endfor %}
+    </ul>
+</main>
+{% endblock content %}

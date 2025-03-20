@@ -5,20 +5,11 @@
 {% block content %}
 <main>
     <div class="cardapio">
-        <div class="cardapio-item">
-            <img src="https://pizzariazermatt.com.br/imgs/produto-pizza-sabor-quatro-queijos-tele-entrega-florianopolis-sao-jose.png"
-                alt="">
-            <h3>Pizza Quatro Queijos</h3>
-            <p>Mussarela, provolone, parmesão e gorgonzola.</p>
-            <span>R$ 39,90</span>
-            <a href="#">Adicionar no carrinho</a>
-        </div>
-
         {% for pizza in produtos %}
         <div class="cardapio-item">
-            <img src="{{ pizza.img }}">
-            <h3>{{ pizza.nome }}</h3>
-            <p>{{ pizza.descricao }}</p>
+            <img src="{{ pizza.imagem }}">
+            <h3>{{ pizza.pizza }}</h3>
+            <p>{{ pizza.ingredientes }}</p>
             <span>{{ pizza.preco }}</span>
             <a href="#">Adicionar no carrinho</a>
         </div>
