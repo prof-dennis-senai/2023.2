@@ -13,9 +13,9 @@
         <input type="text" name="ingredientes" placeholder="Ingredientes da Pizza">
         <button type="submit">Criar</button>
     </form>
-    {% if pizza %}
+    {% if pizza.pizza %}
         <ul> 
-            <li>A Pizza "{{ pizza }}" foi criada com sucesso!</li>  
+            <li>A Pizza "{{ pizza.pizza }}" foi criada com sucesso!</li>  
         </ul>
     {% endif %}
 </main>
