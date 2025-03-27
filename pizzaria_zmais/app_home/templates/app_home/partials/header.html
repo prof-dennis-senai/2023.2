@@ -1,9 +1,9 @@
 <header>
     <nav class="menu">
         <ul>
-            <li><a href="#">Cardápio</a></li>
+            <li><a href="{% url 'home' %}">Cardápio</a></li>
             <li><a href="#">Promoções</a></li>
-            <li><a href="#">Carrinho</a></li>
+            <li class="carrinho"><a href="{% url 'comprar_carrinho_pizza' %}">Carrinho</a> {% if request.session.quantidade_pizzas %}<span class="carrinho-quantidade">{{ request.session.quantidade_pizzas }}</span> {% endif %}</li>
             <li><a href="#">Contato</a></li>
         </ul>
     </nav>

@@ -11,7 +11,7 @@
             <h3>{{ pizza.pizza }}</h3>
             <p>{{ pizza.ingredientes }}</p>
             <span>R${{ pizza.preco }}</span>
-            <a href="#">Adicionar no carrinho</a>
+            <a href="{% url 'carrinho_pizza' pizza.id %}">Adicionar no carrinho</a>
         </div>
         {% endfor %}
 

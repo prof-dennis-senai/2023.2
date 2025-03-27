@@ -116,3 +116,19 @@ main {
 .cardapio-item a:hover {
     background-color: #ffae00;
 }
+
+.carrinho {
+    position: relative;
+}
+
+.carrinho-quantidade {
+    position: absolute;
+    top: -25px;
+    right: -10px;
+    background-color: #fff;
+    color: #c41a30;
+    padding: 3px 8px;
+    border-radius: 100%;
+    font-size: 1rem;
+    font-weight: bold;
+}
