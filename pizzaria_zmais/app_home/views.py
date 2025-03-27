@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from app_home.models import PizzaModel
+from django.core.mail import send_mail
 
 # Create your views here.
 def home(request):
@@ -16,7 +17,7 @@ def criar_pizza(request):
     preco = request.POST.get('preco')
     imagem = request.POST.get('imagem')
     ingredientes = request.POST.get('ingredientes')
-    PizzaModel.objects.create(pizza=pizza, preco=preco, imagem=imagem, ingredientes=ingredientes)
+    pizza = PizzaModel.objects.create(pizza=pizza, preco=preco, imagem=imagem, ingredientes=ingredientes)
     return render(request, 'app_home/pages/pizza.html', context={'pizza': pizza})
 
 
@@ -61,3 +62,14 @@ def comprar_carrinho_pizza(request):
         lista_pizzas.append(pizza)
     
     return render(request, 'app_home/pages/listar_carrinho.html', context={'pizzas': lista_pizzas, 'quantidade_pizzas': len(pizzas)})
+
+
+def mandar_email(usuario,mensagem,titulo):
+    print(f'Enviando email para {usuario} com a mensagem: {mensagem}')
+    send_mail(
+    titulo,
+    mensagem,
+    'seu_email@gmail.com',
+    [usuario],
+    fail_silently=False,
+)
