@@ -78,6 +78,30 @@ main {
     margin: 0 auto;
     max-width: 1024px;
 }
+
+header > .admin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffae00;
+    height: 65px;
+    gap: 10px;
+}
+
+header > .admin a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+header > .admin a:hover {
+    color: #ffffff;
+    background-color: #c41a30;    
+}
+
 .cardapio {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
