@@ -3,9 +3,11 @@
     padding: 0;
     box-sizing: border-box;
 }
+p,a,span,h1,h2,h3,h4,h5,h6{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 
 body {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background-color: #fdf5e8;
 }
 
@@ -16,10 +18,11 @@ header {
 
 .menu {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: #c41a30;
     height: 100px;
+    padding: 0 32px;
 }
 
 .menu ul {
@@ -58,6 +61,17 @@ header {
 
 .menu li a:hover::after {
     width: 42px; 
+}
+
+.menu .logo {
+    width: 90px;
+    border-radius: 100%;
+}
+
+.menu > span {
+    color: #ffae00;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 main {
