@@ -4,6 +4,15 @@
 
 {% block content %}
 <main>
+    <div class="busca">
+        <form action="{% url 'home' %}" method="get">
+            <input type="text" name="busca" placeholder="Buscar Pizza">
+            <button type="submit">Buscar</button>
+        </form>
+        {% if pesquisa %}
+            <span>{{ pesquisa }} <a href="{% url 'home' %}">X</a></span>
+        {% endif %}
+    </div>
     <div class="cardapio">
         {% for pizza in produtos %}
         <div class="cardapio-item">

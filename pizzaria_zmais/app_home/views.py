@@ -5,9 +5,12 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home(request):
-    print(request.session.get('pizza', []), request.session.get('quantidade_pizzas', 0))
-    lista_produtos = PizzaModel.objects.all()
-    return render(request, 'app_home/pages/home.html', context={'produtos': lista_produtos, })
+    pesquisa = request.GET.get('busca')
+    if pesquisa:
+        lista_produtos = PizzaModel.objects.filter(pizza__icontains=pesquisa)
+    else:
+        lista_produtos = PizzaModel.objects.all()
+    return render(request, 'app_home/pages/home.html', context={'produtos': lista_produtos, 'pesquisa': pesquisa})
 
 
 @login_required
