@@ -29,6 +29,7 @@ header {
     display: flex;
     list-style: none;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .menu li a {
@@ -63,7 +64,7 @@ header {
     width: 42px; 
 }
 
-.menu .logo {
+.logo {
     width: 90px;
     border-radius: 100%;
 }
@@ -72,6 +73,7 @@ header {
     color: #ffae00;
     font-size: 1.2rem;
     font-weight: bold;
+    text-wrap: nowrap;
 }
 
 main {
@@ -169,4 +171,57 @@ header > .admin a:hover {
     border-radius: 100%;
     font-size: 1rem;
     font-weight: bold;
+}
+
+
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #c41a30;
+    color: #fff;
+    gap: 50px;
+    padding: 50px 10px;
+}
+
+.conteiner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    background-color: #c41a30;
+    color: #fff;
+}
+
+.conteiner > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.conteiner span {
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+    display: block;
+    padding: 10px;
+}
+
+.conteiner ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.conteiner a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.conteiner .icon-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
