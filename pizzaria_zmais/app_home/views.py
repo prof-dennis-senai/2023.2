@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from app_home.models import PizzaModel
+from app_home.models import PizzaModel, VendaPizzaModel, VendaModel
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 
@@ -68,6 +68,21 @@ def comprar_carrinho_pizza(request):
     
     return render(request, 'app_home/pages/listar_carrinho.html', context={'pizzas': lista_pizzas, 'quantidade_pizzas': len(pizzas)})
 
+def finalizar_carrinho_pizza(request):
+    pizzas = request.session.get('pizza', [])
+    if not pizzas:
+        return redirect('comprar_carrinho_pizza')
+
+    pizzas = PizzaModel.objects.filter(id__in=pizzas)
+
+    venda = VendaModel.objects.create()
+
+    for pizza in pizzas:
+        VendaPizzaModel.objects.create(pizza=pizza, venda=venda, preco=pizza.preco)
+
+    request.session['pizza'] = []
+    request.session['quantidade_pizzas'] = 0
+    return render(request, 'app_home/pages/finalizar_carrinho.html', context={'pizzas': pizzas})
 
 def mandar_email(usuario,mensagem,titulo):
     print(f'Enviando email para {usuario} com a mensagem: {mensagem}')
@@ -78,3 +93,8 @@ def mandar_email(usuario,mensagem,titulo):
     [usuario],
     fail_silently=False,
 )
+
+
+def venda_pizza(request):
+    vendas = VendaPizzaModel.objects.select_related('pizza', 'venda').all()
+    return render(request, 'app_home/pages/venda_pizza.html', context={'vendas': vendas})

@@ -7,12 +7,11 @@
     <h1>Listar Carrinho</h1>
     <ul>
 
-        {% for pizza in pizzas %}
+        {% for venda in vendas %}
         <li>
-            <p>{{ pizza.pizza }} - {{ pizza.preco }} - {{ pizza.ingredientes }}</p>
+            <p>{{ venda.pizza.pizza}} - {{ venda.pizza.preco}}</p>
         </li>
         {% endfor %}
     </ul>
-    <a href="{% url 'finalizar_carrinho_pizza' %}">Comprar</a>
 </main>
 {% endblock content %}

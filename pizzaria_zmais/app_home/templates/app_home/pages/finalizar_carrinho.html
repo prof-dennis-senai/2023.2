@@ -1,0 +1,12 @@
+{% extends "global/base.html" %}
+
+{% block title %}Pedido Finalizado{% endblock title %}
+
+{% block content %}
+<main>
+    <h1>Seu Pedido chegou no balcão</h1>
+    <p>Seu pedido foi finalizado com sucesso!</p>
+    <p>Sua pizza chegará em breve quentinha no endereço informado!</p>
+    <a href="{% url 'home' %}">Voltar para página inicial</a>
+</main>
+{% endblock content %}
