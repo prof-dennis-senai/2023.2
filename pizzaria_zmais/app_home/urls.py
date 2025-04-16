@@ -12,4 +12,5 @@ urlpatterns = [
     path('carrinho/limpar', views.limpar_carrinho_pizza, name='limpar_carrinho_pizza'),
     path('carrinho/<int:id>', views.carrinho_pizza, name='carrinho_pizza'),
     path('venda/', views.venda_pizza, name='venda_pizza'),
+    path('cadastrar/cliente', views.cadastrar_cliente, name='cadastrar_cliente'),
 ]

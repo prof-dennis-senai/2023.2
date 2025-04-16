@@ -28,3 +28,15 @@ class VendaPizzaModel(models.Model):
 
     def __str__(self):
         return f"VendaPizza({self.pizza}, {self.venda}, {self.preco})"
+    
+
+class ClienteModel(models.Model):
+    nome = models.CharField(max_length=100)
+    endereco = models.CharField(max_length=200)
+    email = models.EmailField()
+
+    criado_em = models.DateTimeField(auto_now_add=True)
+    alterado_em = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Cliente({self.nome}, {self.endereco}, {self.email})"

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from app_home.models import PizzaModel, VendaPizzaModel, VendaModel
+from app_home.models import PizzaModel, VendaPizzaModel, VendaModel, ClienteModel
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 
@@ -135,3 +135,13 @@ def venda_pizza(request):
     FROM tabela2
     WHERE id = x
     """
+
+def cadastrar_cliente(request):
+    if request.method == 'GET':
+        return render(request, 'app_home/pages/cadastrar_cliente.html')
+    
+    nome = request.POST.get('nome')
+    endereco = request.POST.get('endereco')
+    email = request.POST.get('email')
+    ClienteModel.objects.create(nome=nome, endereco=endereco, email=email)
+    return redirect(cadastrar_cliente)

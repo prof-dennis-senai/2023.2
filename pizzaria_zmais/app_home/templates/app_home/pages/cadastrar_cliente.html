@@ -1,0 +1,21 @@
+{% extends "global/base.html" %}
+
+{% block title %}Criar Pizza{% endblock title %}
+
+{% block content %}
+<main>
+    <h1>Cadastrar Cliente</h1>
+    <form action="{% url 'cadastrar_cliente' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="nome" placeholder="Nome do Cliente">
+        <input type="text" name="email" placeholder="Email do Cliente">
+        <input type="text" name="endereco" placeholder="Endereço do Cliente">
+        <button type="submit">Criar</button>
+    </form>
+    {% if pizza.pizza %}
+        <ul> 
+            <li>O Cliente "{{ pizza.pizza }}" com o id "{{ pizza.id }}" foi criado com sucesso!</li>  
+        </ul>
+    {% endif %}
+</main>
+{% endblock content %}
