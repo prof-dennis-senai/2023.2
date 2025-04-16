@@ -59,6 +59,11 @@ def carrinho_pizza(request, id):
     request.session['quantidade_pizzas'] = quantidade_pizzas
     return redirect('home')
 
+def limpar_carrinho_pizza(request):
+    request.session['pizza'] = []
+    request.session['quantidade_pizzas'] = 0
+    return redirect('home')
+
 def comprar_carrinho_pizza(request):
     pizzas = request.session.get('pizza', [])
     lista_pizzas = []
@@ -94,7 +99,39 @@ def mandar_email(usuario,mensagem,titulo):
     fail_silently=False,
 )
 
-
+@login_required
 def venda_pizza(request):
-    vendas = VendaPizzaModel.objects.select_related('pizza', 'venda').all()
+    vendas_raw = VendaPizzaModel.objects.select_related('venda', 'pizza').order_by('venda__id')
+
+    vendas = []
+    ultima_id = None
+    cor_atual = '#ff0000'
+
+    for item in vendas_raw:
+        if item.venda.id != ultima_id:
+            cor_atual = '#00ff00' if cor_atual == '#ff0000' else '#ff0000'
+            ultima_id = item.venda.id
+        vendas.append({
+            'venda': item.venda,
+            'pizza': item.pizza,
+            'cor': cor_atual
+        })
+
     return render(request, 'app_home/pages/venda_pizza.html', context={'vendas': vendas})
+
+    """
+    # O que o Django faz com o select_related
+    SELECT *
+    FROM tabela1
+    INNER JOIN tabela2 
+    ON tabela1.id = tabela2.id
+    
+
+    # O que o Django faz sem o select_related
+    SELECT *
+    FROM tabela1
+
+    SELECT campo
+    FROM tabela2
+    WHERE id = x
+    """

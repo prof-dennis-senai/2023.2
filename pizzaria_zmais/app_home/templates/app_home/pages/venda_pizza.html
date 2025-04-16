@@ -4,14 +4,15 @@
 
 {% block content %}
 <main>
-    <h1>Listar Carrinho</h1>
+    <h1>Listar Venda</h1>
     <ul>
-
-        {% for venda in vendas %}
+    {% for venda in vendas %}
         <li>
-            <p>{{ venda.pizza.pizza}} - {{ venda.pizza.preco}}</p>
+            <p style="background-color: {{ venda.cor }};">
+                {{ venda.venda.id }} - {{ venda.pizza.pizza }} - {{ venda.pizza.preco }}
+            </p>
         </li>
-        {% endfor %}
+    {% endfor %}
     </ul>
 </main>
 {% endblock content %}

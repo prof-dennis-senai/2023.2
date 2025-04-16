@@ -11,8 +11,14 @@
         <li>
             <p>{{ pizza.pizza }} - {{ pizza.preco }} - {{ pizza.ingredientes }}</p>
         </li>
+        {% empty %}
+        <li>
+            <p>Seu carrinho esta vazio</p>
+        </li>
         {% endfor %}
     </ul>
-    <a href="{% url 'finalizar_carrinho_pizza' %}">Comprar</a>
+    {% if pizzas %}
+        <span><a href="{% url 'limpar_carrinho_pizza' %}">Limpar carrinho</a> - <a href="{% url 'finalizar_carrinho_pizza' %}">Comprar</a></span>
+    {% endif %}
 </main>
 {% endblock content %}
