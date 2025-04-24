@@ -5,15 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="{% static 'global/img/logo-icon.ico' %}">
-    <link rel="stylesheet" href="{% static 'global/css/style.css' %}">
     <title>Pizzaria ZMais | {% block title %}{% endblock title %}</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <link rel="stylesheet" href="{% static 'global/css/style.css' %}">
 </head>
 
 <body>
     {% include "global/partials/header.html" %}
 
     {% block content %}{% endblock content %}
-
+    
     {% include "global/partials/footer.html" %}
+    <script src="{% static 'global/js/script.js' %}"></script>
 </body>
 </html>
