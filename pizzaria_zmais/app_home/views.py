@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from app_home.models import PizzaModel, VendaPizzaModel, VendaModel, ClienteModel
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
@@ -34,6 +35,7 @@ def listar_pizzas(request):
 def deletar_pizza(request, id):
     pizza = PizzaModel.objects.get(id=id)
     pizza.delete()
+    messages.success(request, 'Pizza deletada com sucesso!')
     return redirect('listar') 
 
 @login_required
