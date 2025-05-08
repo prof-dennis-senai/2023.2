@@ -22,6 +22,8 @@
             <span>R${{ pizza.preco }}</span>
             <a href="{% url 'carrinho_pizza' pizza.id %}">Adicionar no carrinho</a>
         </div>
+        {% empty %}
+        <span>A página ainda não possui produtos</span>
         {% endfor %}
 
     </div>
