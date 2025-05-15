@@ -29,6 +29,10 @@ class VendaPizzaModel(models.Model):
     def __str__(self):
         return f"VendaPizza({self.pizza}, {self.venda}, {self.preco})"
     
+    @staticmethod
+    def quantidade_vendida(pizza:str):
+        return VendaPizzaModel.objects.filter(pizza__pizza=pizza).count()
+    
 
 class ClienteModel(models.Model):
     nome = models.CharField(max_length=100)
@@ -40,3 +44,4 @@ class ClienteModel(models.Model):
 
     def __str__(self):
         return f"Cliente({self.nome}, {self.endereco}, {self.email})"
+    

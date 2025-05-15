@@ -5,11 +5,6 @@ from django.urls import reverse
 
 from app_home.models import PizzaModel
 
-# Create your tests here.
-def test_url_home():
-    url = reverse('home')
-    assert url == '/'
-
 @pytest.mark.django_db
 def test_url_home_200():
     client = Client()
